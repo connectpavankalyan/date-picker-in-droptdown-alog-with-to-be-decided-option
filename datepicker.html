@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+.dropbtn {
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  color:black;
+  cursor: pointer;
+}
+
+.dropdown {
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  padding: 10px;
+  border: 1px solid black;
+  position: absolute;
+  background-color: #f1f1f1;
+  overflow: auto;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+</head>
+<body>
+
+<div class="container" onclick="webpage()">
+    <h2>Predicted Date</h2>
+    <div class="dropdown">
+        <input readonly="readonly" type="text" onclick="myFunction()" class="dropbtn" id="predicteddate" placeholder="
+        -">
+        <div id="myDropdown" class="dropdown-content">
+            <div id="tbd" style="padding: 10px;"  value="TBD" onclick="predicteddateTBD()">TBD</div>
+            <div style="padding: 10px;"><input  id="calender" type="date" onchange="predictedDate()" type="date"></div>
+        </div>
+    </div>
+
+</div>
+    <script>
+      
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+      //  window.onclick = function() {
+      //   if (!event.target.matches('.dropbtn')) {
+      //       var dropdowns = document.getElementsByClassName("dropdown-content");
+      //       var i;
+      //       for (i = 0; i < dropdowns.length; i++) {
+      //       var openDropdown = dropdowns[i];
+      //       if (openDropdown.classList.contains('show')) {
+      //           openDropdown.classList.remove('show');
+      //       }
+      //       }
+      //     }
+      //   }
+
+      window.addEventListener("click", function(event) {
+        if (!event.target.matches('.dropbtn')) {
+          
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+            }
+          }
+        });
+
+        function predicteddateTBD(){
+                    var predictedTBD=document.getElementById('tbd').innerText;
+                    document.getElementById("predicteddate").value = predictedTBD;
+                    document.getElementById("myDropdown").classList.remove("show");
+                }
+        function predictedDate(){
+                    var predictedTBD=document.getElementById('calender').value;
+                    document.getElementById("predicteddate").value = predictedTBD;
+                    document.getElementById("myDropdown").classList.remove("show");
+                }
+    </script>
+
+</body>
+</html>
